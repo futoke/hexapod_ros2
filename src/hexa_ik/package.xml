@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>hexa_ik</name>
+  <version>0.0.1</version>
+  <description>Inverse kinematics package for the Hexa robot.</description>
+
+  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- Инструменты сборки -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Основные зависимости -->
+  <depend>rclcpp</depend>
+  <depend>tf2</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>urdf</depend>
+
+  <!-- Зависимости для работы с URDF -->
+  <depend>urdfdom_headers</depend>
+  <depend>urdf_parser_plugin</depend> <!-- Может потребоваться, если используется плагин для разбора URDF -->
+
+  <!-- Зависимости для запуска -->
+  <exec_depend>launch</exec_depend>
+
+  <!-- Экспорт -->
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
