@@ -13,6 +13,7 @@
 #include <iostream>
 #include "sensor_msgs/msg/joy.hpp"
 
+
 class TripodGaitNode : public rclcpp::Node, public std::enable_shared_from_this<TripodGaitNode> {
 public:
     TripodGaitNode()
@@ -28,14 +29,14 @@ public:
 
           // Подписка на топик /joy
         joy_subscriber_ = this->create_subscription<sensor_msgs::msg::Joy>(
-         "/joy", 10, 
+         "/joy", 20, 
          std::bind(&TripodGaitNode::joy_callback, this, std::placeholders::_1));
   
 
         
         // Подписка на cmd_vel
         cmd_vel_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
-            "/cmd_vel", 10,
+            "/cmd_vel", 20,
             std::bind(&TripodGaitNode::cmd_vel_callback, this, std::placeholders::_1));
 
 
@@ -44,8 +45,7 @@ public:
             std::chrono::milliseconds(20),
             std::bind(&TripodGaitNode::update_tripod_gait, this));
 
-        // Инициализация времени для синусоиды
-        start_time_ = this->get_clock()->now();
+
     }
 
 private:
@@ -68,31 +68,27 @@ private:
     const HexapodGeometry HEXAPOD_GEOMETRY;
 
 
- 
-    // Время старта для синусоиды
-    rclcpp::Time start_time_;
-
     // Массивы для хранения линейных и угловых скоростей
-    std::array<double, 3> linear_vel = {0.0, 0.0, 0.0};
-    std::array<double, 3> angular_vel = {0.0, 0.0, 0.0};
-    // double linear_vel[3];  // [x, y, z] линейные скорости
-    // double angular_vel[3]; // [x, y, z] угловые скорости
+    std::array<double, 3> linear_vector = {0.0, 0.0, 0.0};
+    std::array<double, 3> angular_vector = {0.0, 0.0, 0.0};
+    // double linear_vector[3];  // [x, y, z] линейные скорости
+    // double angular_vector[3]; // [x, y, z] угловые скорости
 
     void joy_callback(const sensor_msgs::msg::Joy::SharedPtr msg)
     {
 
         // Вывод значений осей
 
-        float axis_value = msg->axes[4];
-        RCLCPP_INFO(this->get_logger(), "Axis value: %f", static_cast<double>(axis_value));
+        // float axis_value = msg->axes[0];
+        // RCLCPP_INFO(this->get_logger(), "Axis value: %f", static_cast<double>(axis_value));
 
-        linear_vel[0] = msg->axes[3]*0.1; // линейная скорость по оси X
-        linear_vel[1] = msg->axes[2]*0.1; // линейная скорость по оси Y
-        linear_vel[2] = 0.0; // линейная скорость по оси Z
+        linear_vector[0] = msg->axes[3]*0.1; // линейная скорость по оси X
+        linear_vector[1] = msg->axes[2]*0.1; // линейная скорость по оси Y
+        linear_vector[2] = 0.0; // линейная скорость по оси Z
 
-        angular_vel[0] = 0.0; // угловая скорость по оси X
-        angular_vel[1] = 0.0; // угловая скорость по оси Y
-        angular_vel[2] =msg->axes[0]*0.1; // угловая скорость по оси Z
+        angular_vector[0] = 0.0; // угловая скорость по оси X
+        angular_vector[1] = 0.0; // угловая скорость по оси Y
+        angular_vector[2] =msg->axes[0]*0.1; // угловая скорость по оси Z
 
         // RCLCPP_INFO(this->get_logger(), "Axes: ");
         // for (size_t i = 0; i < msg->axes.size(); ++i)
@@ -115,59 +111,75 @@ private:
     // Callback для обработки команд скорости
     void cmd_vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg) {
         // Обновление линейных и угловых скоростей из полученного сообщения
-        // linear_vel[0] = msg->linear.x; // линейная скорость по оси X
-        // linear_vel[1] = msg->linear.y; // линейная скорость по оси Y
-        // linear_vel[2] = msg->linear.z; // линейная скорость по оси Z
+        // linear_vector[0] = msg->linear.x; // линейная скорость по оси X
+        // linear_vector[1] = msg->linear.y; // линейная скорость по оси Y
+        // linear_vector[2] = msg->linear.z; // линейная скорость по оси Z
 
-        // angular_vel[0] = msg->angular.x; // угловая скорость по оси X
-        // angular_vel[1] = msg->angular.y; // угловая скорость по оси Y
-        // angular_vel[2] = msg->angular.z; // угловая скорость по оси Z
+        // angular_vector[0] = msg->angular.x; // угловая скорость по оси X
+        // angular_vector[1] = msg->angular.y; // угловая скорость по оси Y
+        // angular_vector[2] = msg->angular.z; // угловая скорость по оси Z
 
         // Логирование полученных значений
         // RCLCPP_INFO(this->get_logger(), "Received cmd_vel: linear[x=%.2f, y=%.2f, z=%.2f], angular[x=%.2f, y=%.2f, z=%.2f]",
-        //             linear_vel[0], linear_vel[1], linear_vel[2],
-        //             angular_vel[0], angular_vel[1], angular_vel[2]);
+        //             linear_vector[0], linear_vector[1], linear_vector[2],
+        //             angular_vector[0], angular_vector[1], angular_vector[2]);
     }
+
+    double period  = 0.0;
 
 
     // Основной цикл обработки данных
     void update_tripod_gait() {
-        // Текущее время
-        rclcpp::Time current_time = this->get_clock()->now();
-        double elapsed_time = (current_time - start_time_).seconds();
-
-        double cycle_time = 1.0;   // Время полного цикла (быстрее или медленнее шаг)
+        double step_speed = 2.0;
         double step_height = 0.07; // Высота шага
+        std::array<double, 6> leg_phases = {0.0, 0.5, 0.0, 0.5, 0.0, 0.5}; 
+
+        if (std::abs(linear_vector[0])+ std::abs(linear_vector[1]+angular_vector[2]) > 0.03) {
+            period += 1;
+            if (period >= step_speed*50) { 
+                period = 0;
+            } 
+        } else {
+            period = 0.0;
+        }
+
+        
+        
+
 
 
         // Вызов тактирующей функции
-        std::vector<double> timing = generate_cubic_timing(elapsed_time, cycle_time);
+        double timing = generate_cubic_timing(period, step_speed*50);
+        // Выводим в лог
+        // RCLCPP_INFO(this->get_logger(),"Start Time: %f, Elapsed Time: %f", start_time_.seconds(), elapsed_time);
+        // RCLCPP_INFO(this->get_logger(), " timing : %f, period: %f", timing, period);
 
         // Распределяем фазы между ногами
-        std::vector<double> leg_phases = gait_phases_tripod(timing[0], {0, 2, 4}, {1, 3, 5});
-
-
-
+        leg_phases = gait_phases_tripod(timing);
         // Генерация траекторий для каждой ноги
-        for (size_t i = 0; i < 6; ++i) {
+        for (size_t leg_number = 0; leg_number < 6; ++leg_number) {
 
-            std::array<double, 4> step = generate_arc_and_line(leg_phases[i], step_height, linear_vel, angular_vel[2]);
+            std::array<double, 6> step = generate_arc_and_line(leg_phases[leg_number], step_height, linear_vector, angular_vector[2]);
+            // RCLCPP_INFO(this->get_logger(), "Axis value: %f", step[3]);
 
-            std::array<double, 4> ik_pos = tripod_transform_line(i, step, LEG_ANGLES, X_OFFSET, Y_OFFSET, linear_vel);
-           
-            std::array<double, 4> ik_rot = tripod_transform_rot(i, step, LEG_ANGLES, X_OFFSET, Y_OFFSET, angular_vel);
-
+            // leg number для какой ноги
+            // step дуга сгенерированная для шага
+            // LEG_ANGLES разворот ног относительно тела
+            // X_OFFSET как далеко от центра тела генерируется дуга 
+            // linear_vector вектор напрвления 
+            std::array<double, 6> ik_pos = tripod_transform_line(leg_number, step, LEG_ANGLES, X_OFFSET, linear_vector, angular_vector[2]);
+    
             // Вычисление IK
-            const auto& leg_params = HEXAPOD_GEOMETRY.legs[i];
-            // IKResult ik_result = calculate_leg_ik(ik_pos[0]+ik_rot[0], ik_pos[1]+ ik_rot[1], ik_pos[2], leg_params);
+            const auto& leg_params = HEXAPOD_GEOMETRY.legs[leg_number];
+
             IKResult ik_result = calculate_leg_ik(ik_pos[0], ik_pos[1], ik_pos[2], leg_params);
 
             if (ik_result.success) {
-                joint_state_.positions[i * 3] = ik_result.joint1_angle;
-                joint_state_.positions[i * 3 + 1] = ik_result.joint2_angle;
-                joint_state_.positions[i * 3 + 2] = ik_result.joint3_angle;
+                joint_state_.positions[leg_number * 3] = ik_result.joint1_angle;
+                joint_state_.positions[leg_number * 3 + 1] = ik_result.joint2_angle;
+                joint_state_.positions[leg_number * 3 + 2] = ik_result.joint3_angle;
             } else {
-                RCLCPP_WARN(this->get_logger(), "IK failed for leg %zu", i + 1);
+                RCLCPP_WARN(this->get_logger(), "IK failed for leg %zu", leg_number + 1);
             }
         }
 
@@ -176,69 +188,6 @@ private:
 
         // Публикация состояния суставов
         publish_joint_states();
-    }
-
-    // Генерация тактирующего сигнала на основе полинома 3-й степени (cubic easing) с замедлением к 0.5 и ускорением с 0.5
-    std::vector<double> generate_cubic_timing(
-        double elapsed_time, 
-        double cycle_time) {
-
-        std::vector<double> timing;
-
-        // Нормализованное время в пределах цикла [0, 1)
-        double normalized_time = std::fmod(elapsed_time, cycle_time) / cycle_time;
-
-        // Ускорение и замедление: разные фазы
-        double gait_phase;
-        if (normalized_time < 0.5) {
-            double t = normalized_time * 2.0; // Приводим к диапазону 0–1 для первой половины
-            gait_phase = 0.5 * (3 * t * t - 2 * t * t * t); // S-образное замедление к 0.5
-        } else {
-            double t = (normalized_time - 0.5) * 2.0; // Приводим к диапазону 0–1 для второй половины
-            gait_phase = 0.5 + (0.5 * (3 * t * t - 2 * t * t * t)); // S-образное ускорение с 0.5
-        }
-
-        timing.push_back(gait_phase);
-
-        // Вывод значений тайминга в порт (консоль)
-        // std::cout << "Elapsed time: " << elapsed_time 
-        //         << ", Normalized time: " << normalized_time 
-        //         << ", Gait phase: " << gait_phase << std::endl;
-
-        return timing;
-    }
-
-
-    // Генерация траектории дуги и прямой для одной ноги
-    std::array<double, 4> generate_arc_and_line(
-        double gait_phase,
-        double step_height,
-        const std::array<double, 3>& direction,
-        double rotation
-        ) {
-
-        std::array<double, 4> result = {0.0, 0.0, 0.0, 0.0};
-
-
-        if (std::abs(direction[0])+ std::abs(direction[1]) +  std::abs(rotation) > 0.01) {
-            if (gait_phase < 0.5) {
-            double t = gait_phase * 2.0;
-            result[0] = t * direction[0];       // Прогресс по X
-            result[1] = t * direction[1];       // Прогресс по Y
-            result[3] = t * rotation;       // Прогресс по Y
-
-            result[2] = step_height * t * (1 - t); // Парабола для подъема
-            } else {
-                double t = (gait_phase - 0.5) * 2.0;
-                result[0] = (1.0 - t) * direction[0]; // Линейное возвращение по X
-                result[1] = (1.0 - t) * direction[1]; // Линейное возвращение по Y
-                result[3] = (1.0 - t) * rotation; // Линейное возвращение по Y
-                
-                result[2] = 0.0; // Опускаем ногу на землю
-            }
-        }
-
-        return result;
     }
 
     // Функция публикации состояний суставов

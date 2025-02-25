@@ -29,7 +29,7 @@ IKResult calculate_leg_ik(double foot_x, double foot_y, double foot_z, const Hex
     // std::cout << "cos_joint3: " << cos_joint3 << std::endl;
     
   
-    result.joint3_angle =(cos_joint3)- ((M_PI/2 )+ 0.297);
+    result.joint3_angle =(cos_joint3)- ((M_PI/2 )+ 0.31339);
     // std::cout << "joint3_angle: " << result.joint3_angle << std::endl;
 
     // угол от плоскости к стороне ik_sw

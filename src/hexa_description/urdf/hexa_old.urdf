@@ -1,4 +1,4 @@
-<robot name="hexa" version="1.0">
+<robot name="hexo" version="1.0">
   <joint name="leg1_link1_joint" type="revolute">
     <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
     <origin rpy="0.000000 0.000000 -0.523598" xyz="0.075777 -0.043750 -0.000000"/>
@@ -7,18 +7,18 @@
     <axis xyz="0.000000 0.000000 1.000000"/>
   </joint>
   <joint name="leg1_link2_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 -0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg1_link1"/>
     <child link="leg1_link2"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg1_link3_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 0.000000" xyz="0.080000 -0.000000 -0.000000"/>
     <parent link="leg1_link2"/>
     <child link="leg1_link3"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg1_link4_joint" type="revolute">
     <limit lower="-3.140000" upper="3.140000" effort="10.000000" velocity="10.000000"/>
@@ -35,18 +35,18 @@
     <axis xyz="0.000000 0.000000 1.000000"/>
   </joint>
   <joint name="leg2_link2_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg2_link1"/>
     <child link="leg2_link2"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg2_link3_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg2_link2"/>
     <child link="leg2_link3"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg2_link4_joint" type="revolute">
     <limit lower="-3.140000" upper="3.140000" effort="10.000000" velocity="10.000000"/>
@@ -63,18 +63,18 @@
     <axis xyz="0.000000 0.000000 1.000000"/>
   </joint>
   <joint name="leg3_link2_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg3_link1"/>
     <child link="leg3_link2"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg3_link3_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg3_link2"/>
     <child link="leg3_link3"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg3_link4_joint" type="revolute">
     <limit lower="-3.140000" upper="3.140000" effort="10.000000" velocity="10.000000"/>
@@ -91,18 +91,18 @@
     <axis xyz="0.000000 0.000000 1.000000"/>
   </joint>
   <joint name="leg4_link2_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 -0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg4_link1"/>
     <child link="leg4_link2"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg4_link3_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 -0.000000" xyz="0.080000 0.000000 0.000000"/>
     <parent link="leg4_link2"/>
     <child link="leg4_link3"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg4_link4_joint" type="revolute">
     <limit lower="-3.140000" upper="3.140000" effort="10.000000" velocity="10.000000"/>
@@ -119,18 +119,18 @@
     <axis xyz="0.000000 0.000000 1.000000"/>
   </joint>
   <joint name="leg5_link2_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 -0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg5_link1"/>
     <child link="leg5_link2"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg5_link3_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
-    <origin rpy="0.000000 0.000000 0.000000" xyz="0.080000 -0.000000 0.000000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
+    <origin rpy="0.000000 0.000000 0.000000" xyz="0.080000 -0.000000 -0.000000"/>
     <parent link="leg5_link2"/>
     <child link="leg5_link3"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg5_link4_joint" type="revolute">
     <limit lower="-3.140000" upper="3.140000" effort="10.000000" velocity="10.000000"/>
@@ -147,18 +147,18 @@
     <axis xyz="0.000000 0.000000 1.000000"/>
   </joint>
   <joint name="leg6_link2_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg6_link1"/>
     <child link="leg6_link2"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg6_link3_joint" type="revolute">
-    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="5.220000"/>
+    <limit lower="-2.000000" upper="2.000000" effort="1.960000" velocity="0.000000"/>
     <origin rpy="0.000000 0.000000 -0.000000" xyz="0.080000 -0.000000 0.000000"/>
     <parent link="leg6_link2"/>
     <child link="leg6_link3"/>
-    <axis xyz="0.000000 1.000000 0.000000"/>
+    <axis xyz="0.000000 -1.000000 0.000000"/>
   </joint>
   <joint name="leg6_link4_joint" type="revolute">
     <limit lower="-3.140000" upper="3.140000" effort="10.000000" velocity="10.000000"/>
@@ -168,11 +168,7 @@
     <axis xyz="0.000000 0.000000 1.000000"/>
   </joint>
   <link name="base_link">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="base">
       <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 -0.025435"/>
       <material name="Material"/>
@@ -182,11 +178,7 @@
     </visual>
   </link>
   <link name="leg1_link1">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link1.009">
       <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 -0.025950"/>
       <material name="Material"/>
@@ -196,11 +188,7 @@
     </visual>
   </link>
   <link name="leg1_link2">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link2.009">
       <origin rpy="0.000000 0.000000 0.000000" xyz="-0.000000 -0.025850 0.000000"/>
       <material name="Material"/>
@@ -210,11 +198,7 @@
     </visual>
   </link>
   <link name="leg1_link3">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link3.009">
       <origin rpy="0.000000 0.000000 0.000000" xyz="-0.000000 -0.025750 0.000000"/>
       <material name="Material"/>
@@ -224,18 +208,10 @@
     </visual>
   </link>
   <link name="leg1_link4">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
   </link>
   <link name="leg2_link1">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link1.001">
       <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 -0.025950"/>
       <material name="Material"/>
@@ -245,11 +221,7 @@
     </visual>
   </link>
   <link name="leg2_link2">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link2.001">
       <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 -0.025850 0.000000"/>
       <material name="Material"/>
@@ -259,11 +231,7 @@
     </visual>
   </link>
   <link name="leg2_link3">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link3.001">
       <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 -0.025750 0.000000"/>
       <material name="Material"/>
@@ -273,18 +241,10 @@
     </visual>
   </link>
   <link name="leg2_link4">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
   </link>
   <link name="leg3_link1">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link1.005">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="0.000000 0.000000 -0.025950"/>
       <material name="Material"/>
@@ -294,11 +254,7 @@
     </visual>
   </link>
   <link name="leg3_link2">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link2.005">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="0.000000 -0.025850 0.000000"/>
       <material name="Material"/>
@@ -308,11 +264,7 @@
     </visual>
   </link>
   <link name="leg3_link3">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link3.005">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="-0.000000 -0.025750 0.000000"/>
       <material name="Material"/>
@@ -322,18 +274,10 @@
     </visual>
   </link>
   <link name="leg3_link4">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
   </link>
   <link name="leg4_link1">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link1.003">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="0.000000 0.000000 -0.025950"/>
       <material name="Material"/>
@@ -343,11 +287,7 @@
     </visual>
   </link>
   <link name="leg4_link2">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link2.003">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="0.000000 -0.025850 0.000000"/>
       <material name="Material"/>
@@ -357,11 +297,7 @@
     </visual>
   </link>
   <link name="leg4_link3">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link3.003">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="0.000000 -0.025750 0.000000"/>
       <material name="Material"/>
@@ -371,18 +307,10 @@
     </visual>
   </link>
   <link name="leg4_link4">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
   </link>
   <link name="leg5_link1">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link1.007">
       <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 -0.025950"/>
       <material name="Material"/>
@@ -392,11 +320,7 @@
     </visual>
   </link>
   <link name="leg5_link2">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link2.007">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="-0.000000 -0.025850 0.000000"/>
       <material name="Material"/>
@@ -406,11 +330,7 @@
     </visual>
   </link>
   <link name="leg5_link3">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link3.007">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="-0.000000 -0.025750 0.000000"/>
       <material name="Material"/>
@@ -420,18 +340,10 @@
     </visual>
   </link>
   <link name="leg5_link4">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
   </link>
   <link name="leg6_link1">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link1.011">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="0.000000 -0.000000 -0.025950"/>
       <material name="Material"/>
@@ -441,11 +353,7 @@
     </visual>
   </link>
   <link name="leg6_link2">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link2.011">
       <origin rpy="0.000000 0.000000 0.000000" xyz="-0.000000 -0.025850 -0.000000"/>
       <material name="Material"/>
@@ -455,11 +363,7 @@
     </visual>
   </link>
   <link name="leg6_link3">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
     <visual name="leg5_link3.011">
       <origin rpy="0.000000 0.000000 -0.000000" xyz="-0.000000 -0.025750 0.000000"/>
       <material name="Material"/>
@@ -469,13 +373,9 @@
     </visual>
   </link>
   <link name="leg6_link4">
-    <inertial>
-      <inertia ixx="0.000010" ixy="0.000000" ixz="0.000000" iyy="0.000010" iyz="0.000000" izz="0.000010"/>
-      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
-      <mass value="0.000010"/>
-    </inertial>
+  
   </link>
   <material name="Material">
-    <color rgba="0.133333 0.415686 0.800000 1.000000"/>
+    <color rgba="0.133333 0.415686 0.800000 0.50000"/>
   </material>
 </robot>

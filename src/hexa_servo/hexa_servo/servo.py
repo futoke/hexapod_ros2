@@ -44,7 +44,7 @@ class Servo(Node):
     def init_servos(self):
         self.ctrl = ServoController(
             serial.Serial(
-                "/dev/ttyUSB0",
+                "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
                 9600,
                 timeout=2),
             timeout=5
@@ -55,7 +55,9 @@ class Servo(Node):
         poses = {}
 
         for id, pos in enumerate(msg.position):
-            print
+            if math.isnan(pos):
+                pos = 0.0
+
             steps = round(
                 map_value(math.degrees(pos), -120, 120, 0, 1000)
             )
