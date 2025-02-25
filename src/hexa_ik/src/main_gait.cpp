@@ -136,7 +136,7 @@ private:
         rclcpp::Time current_time = this->get_clock()->now();
         double elapsed_time = (current_time - start_time_).seconds();
 
-        double cycle_time = 2.0;   // Время полного цикла (быстрее или медленнее шаг)
+        double cycle_time = 1.0;   // Время полного цикла (быстрее или медленнее шаг)
         double step_height = 0.07; // Высота шага
 
 

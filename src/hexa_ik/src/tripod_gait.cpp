@@ -46,7 +46,7 @@ std::array<double, 4> tripod_transform_line(
     // Коррекция с учетом смещений
     rotated_x += X_OFFSET[i];
     rotated_y += 0.0; //(direction[0]) / Y_OFFSET[i];
-    result[2] -= 0.05; // Опускаем ногу на землю
+    result[2] -= 0.07; // Опускаем ногу на землю
 
     // Записываем в результат
     result[0] = rotated_x;
