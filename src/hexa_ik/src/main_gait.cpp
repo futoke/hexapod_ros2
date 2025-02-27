@@ -120,16 +120,16 @@ private:
         angular_vector[2] = 0.1 * msg->angular.z; // угловая скорость по оси Z
 
         // Логирование полученных значений
-        RCLCPP_INFO(
-            this->get_logger(),
-            "Received cmd_vel: linear[x=%.2f, y=%.2f, z=%.2f], angular[x=%.2f, y=%.2f, z=%.2f]",
-            linear_vector[0],
-            linear_vector[1],
-            linear_vector[2],
-            angular_vector[0],
-            angular_vector[1],
-            angular_vector[2]
-        );
+        // RCLCPP_INFO(
+        //     this->get_logger(),
+        //     "Received cmd_vel: linear[x=%.2f, y=%.2f, z=%.2f], angular[x=%.2f, y=%.2f, z=%.2f]",
+        //     linear_vector[0],
+        //     linear_vector[1],
+        //     linear_vector[2],
+        //     angular_vector[0],
+        //     angular_vector[1],
+        //     angular_vector[2]
+        // );
     }
 
     double period  = 0.0;

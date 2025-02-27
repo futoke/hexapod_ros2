@@ -18,7 +18,7 @@ def generate_launch_description():
 
     # Параметры для robot_state_publisher
     params = {'robot_description': robot_desc,
-              'use_sim_time': True}
+              'use_sim_time': False}
 
     # Узел для публикации состояний робота
     robot_state_publisher_node = launch_ros.actions.Node(
