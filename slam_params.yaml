@@ -2,18 +2,19 @@ slam_toolbox:
   ros__parameters:
     use_sim_time: false
     map_frame: map
+    odom_frame: odom
     base_frame: base_link
     laser_frame: base_laser
-    laser_scan_topic: /scan
+    scan_topic: /scan
+    odom_topic: /odom
+    publish_map_transform: true
     laser_min_range: 0.1
     laser_max_range: 6.0
-    queue_size: 2000
     tf_map_odom_timeout: 5.0
     tf_map_base_timeout: 5.0
-    odom_frame: odom
     publish_period_sec: 1.0
     resolution: 0.1  # Разрешение карты
-    map_update_interval: 5.0  # Интервал обновления карты
+    map_update_interval: 2.0  # Интервал обновления карты
     max_laser_range: 6.0
     minimum_travel_distance: 0.1
     minimum_travel_heading: 0.1

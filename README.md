@@ -10,9 +10,19 @@ source install/setup.bash && ros2 launch hexa_description display.launch.py
 
 source install/setup.bash && ros2 run hexa_servo servo
 
-source install/setup.bash && ros2 launch ldlidar_stl_ros2 ld19.launch.py
+---- source install/setup.bash && ros2 launch ldlidar_stl_ros2 ld19.launch.py
 
-source install/setup.bash && ros2 run hexa_odom hexa_odom
+---- source install/setup.bash && ros2 launch ldlidar_node ldlidar_bringup.launch.py params_file:=lidar_params.yaml
+
+source install/setup.bash && ros2 launch ldlidar_node ldlidar_slam.launch.py
+
+source install/setup.bash && ros2 run mpu6050_driver mpu6050_driver
+
+---- source install/setup.bash && ros2 run hexa_odom hexa_odom
+
+source install/setup.bash && ros2 launch ros2_laser_scan_matcher scan_matcher.launch.py
+
+source install/setup.bash && ros2 launch nav2_bringup navigation_launch.py
 
 source install/setup.bash && ros2 launch slam_toolbox online_async_launch.py params_file:=mapper_params_online_async.yaml
 
@@ -49,3 +59,20 @@ ros2 run tf2_tools view_frames
 ros2 run tf2_ros tf2_echo odom base_link
 
 ros2 topic hz /scan
+
+sudo apt install -y i2c-tools python3-smbus
+
+sudo apt install -y i2c-tools python3-smbus2
+
+pip install filterpy
+
+colcon build --packages-select ldlidar_component --symlink-
+install --cmake-args=-DCMAKE_BUILD_TYPE=Release
+
+set ROS_DOMAIN_ID=5
+
+call C:\dev\ros2_humble\local_setup.bat
+
+export ROS_DOMAIN_ID=5
+
+source ~/.bashrc
